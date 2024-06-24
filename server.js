@@ -8,8 +8,8 @@ dotenv.config();
 const app = express();
 const PORT = 3000;
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -35,7 +35,7 @@ app.post("/api/sendEmail", async (req, res) => {
             from: email,
             to: 'inquiries@makeupbyram.com',
             subject: subject,
-            text: `Reach Me on this email: ${email}. \n\n\n${message}`,
+            text: `Reach Me on this email: ${email}. \n\n\n\n${message}`,
         });
 
         return res.status(200).send({
